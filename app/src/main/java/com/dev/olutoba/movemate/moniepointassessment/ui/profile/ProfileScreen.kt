@@ -1,4 +1,4 @@
-package com.olabode.wilson.moniepointassessment.ui.profile
+package com.dev.olutoba.movemate.moniepointassessment.ui.profile
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

@@ -13,10 +13,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material.Card
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -38,7 +38,7 @@ import com.dev.olutoba.movemate.moniepointassessment.ui.theme.Purple
 
 @Composable
 fun ShipmentCard(modifier: Modifier = Modifier, shipmentItem: ShipmentItem) {
-    Card(modifier = modifier, shape = RoundedCornerShape(16.dp)) {
+    Card(modifier = modifier, elevation = 0.dp, shape = RoundedCornerShape(16.dp)) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -55,7 +55,7 @@ fun ShipmentCard(modifier: Modifier = Modifier, shipmentItem: ShipmentItem) {
                 Column {
                     Text(
                         text = shipmentItem.arrival,
-                        style = MaterialTheme.typography.titleSmall.copy(
+                        style = MaterialTheme.typography.subtitle1.copy(
                             fontSize = 18.sp
                         ),
                         fontWeight = FontWeight.SemiBold,
@@ -63,12 +63,12 @@ fun ShipmentCard(modifier: Modifier = Modifier, shipmentItem: ShipmentItem) {
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
                         text = "Your delivery ${shipmentItem.packageId}",
-                        style = MaterialTheme.typography.titleMedium,
+                        style = MaterialTheme.typography.subtitle2,
                         color = Color.Gray
                     )
                     Text(
                         text = "from ${shipmentItem.location} is ${shipmentItem.arrival}",
-                        style = MaterialTheme.typography.titleMedium,
+                        style = MaterialTheme.typography.subtitle2,
                         color = Color.Gray
                     )
                 }
@@ -94,14 +94,14 @@ private fun BottomDetailsContainer(modifier: Modifier = Modifier, shipmentItem: 
         Text(
             text = "$${shipmentItem.price} USD",
             color = Purple,
-            style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.SemiBold)
+            style = MaterialTheme.typography.subtitle2.copy(fontWeight = FontWeight.SemiBold)
         )
 
         SeparatorIcon(Modifier.padding(horizontal = 2.dp), color = LightGrey300)
 
         Text(
             text = shipmentItem.date,
-            style = MaterialTheme.typography.titleMedium.copy(
+            style = MaterialTheme.typography.subtitle2.copy(
                 fontWeight = FontWeight.Medium
             ),
             color = Color.DarkGray
@@ -129,7 +129,7 @@ private fun StatusItem(modifier: Modifier = Modifier, status: ShipmentStatus) {
         Text(
             text = status.title,
             color = colorResource(id = status.color),
-            style = MaterialTheme.typography.titleSmall.copy(
+            style = MaterialTheme.typography.caption.copy(
                 fontWeight = FontWeight.Medium
             ),
         )

@@ -26,8 +26,8 @@ object FakeShipmentDataSource {
         return ShipmentItem(
             status = status,
             arrival = "Arriving today!",
-            date = "May 20, 2025",
-            packageId = "#NEJ20068289341${it}231$it",
+            date = "July 18, 2025",
+            packageId = "#NEJ200899341${it}231$it",
             location = "Atlanta",
             price = "${(100 * it) + 50}",
             key = it

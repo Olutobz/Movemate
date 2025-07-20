@@ -9,10 +9,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,11 +32,12 @@ fun MoveMateInputField(
     @DrawableRes vectorImageId: Int? = R.drawable.ic_home,
     onInputChanged: (String) -> Unit
 ) {
+
     TextField(
         modifier = modifier.fillMaxWidth(),
         value = value,
-        colors = TextFieldDefaults.colors(
-            focusedContainerColor = LightGrey100.copy(alpha = 0.5f),
+        colors = TextFieldDefaults.textFieldColors(
+            backgroundColor = LightGrey100.copy(alpha = 0.5f),
             cursorColor = Color.Black,
             disabledLabelColor = LightGrey100,
             focusedIndicatorColor = Color.Transparent,
@@ -83,5 +84,4 @@ fun MoveMateInputField(
 fun PreviewMaterialTextField() {
     MoveMateInputField(vectorImageId = R.drawable.ic_home, value = "", hint = "Hello") {}
 }
-
 

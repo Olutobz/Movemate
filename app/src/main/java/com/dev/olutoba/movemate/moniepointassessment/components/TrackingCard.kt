@@ -12,13 +12,13 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.Card
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -39,6 +39,7 @@ import com.dev.olutoba.movemate.moniepointassessment.ui.theme.Orange600
 fun TrackingCard(modifier: Modifier = Modifier) {
     Card(
         modifier = modifier,
+        elevation = 0.dp,
         shape = RoundedCornerShape(16.dp)
     ) {
         Column(Modifier.fillMaxWidth()) {
@@ -76,14 +77,14 @@ private fun TopSection(modifier: Modifier = Modifier) {
             Text(
                 text = "Shipment Number",
                 color = Color.Gray,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.subtitle2
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = "NEJ2000892849",
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 18.sp,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.subtitle1
             )
         }
 
@@ -142,7 +143,7 @@ private fun TrackingMenuItem(
                 text = header,
                 color = Color.Gray,
                 fontSize = 14.sp,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.subtitle2
             )
             if (statusIcon != null) {
                 Row(Modifier.wrapContentWidth(), verticalAlignment = Alignment.CenterVertically) {
@@ -150,14 +151,14 @@ private fun TrackingMenuItem(
                     Text(
                         text = content,
                         fontWeight = FontWeight.Normal,
-                        style = MaterialTheme.typography.titleSmall
+                        style = MaterialTheme.typography.subtitle1
                     )
                 }
             } else {
                 Text(
                     text = content,
                     fontWeight = FontWeight.Normal,
-                    style = MaterialTheme.typography.titleSmall
+                    style = MaterialTheme.typography.subtitle1
                 )
             }
         }

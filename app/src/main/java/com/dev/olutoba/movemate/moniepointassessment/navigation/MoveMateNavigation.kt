@@ -12,7 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.dev.olutoba.movemate.moniepointassessment.ui.calculate.CalculateScreen
 import com.dev.olutoba.movemate.moniepointassessment.ui.home.HomeScreen
-import com.olabode.wilson.moniepointassessment.ui.profile.ProfileScreen
+import com.dev.olutoba.movemate.moniepointassessment.ui.profile.ProfileScreen
 import com.dev.olutoba.movemate.moniepointassessment.ui.shipment.ShipmentScreen
 import com.dev.olutoba.movemate.moniepointassessment.ui.status.StatusScreen
 

@@ -1,7 +1,7 @@
 package com.dev.olutoba.movemate.moniepointassessment.components
 
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -18,7 +18,7 @@ fun Header(
     Text(
         modifier = modifier,
         text = text,
-        style = MaterialTheme.typography.titleMedium.copy(
+        style = MaterialTheme.typography.subtitle2.copy(
             color = color,
             fontWeight = FontWeight.SemiBold,
             fontSize = 20.sp
@@ -36,7 +36,7 @@ fun SubHeader(
     Text(
         modifier = modifier,
         text = text,
-        style = MaterialTheme.typography.titleSmall.copy(
+        style = MaterialTheme.typography.caption.copy(
             color = color,
             fontSize = 14.sp,
             fontWeight = FontWeight.W500

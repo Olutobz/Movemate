@@ -18,15 +18,15 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.Icon
+import androidx.compose.material.ListItem
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.rounded.Notifications
-import androidx.compose.material3.Icon
-import androidx.compose.material3.ListItem
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -63,10 +63,10 @@ fun HomeAppBar(
     ) {
         ListItem(
             modifier = modifier.fillMaxWidth(),
-            leadingContent = {
+            icon = {
                 CircularImage(res = R.drawable.id_avatar)
             },
-            trailingContent = {
+            trailing = {
                 CircularContainer(color = White, modifier = Modifier) {
                     Icon(
                         Icons.Rounded.Notifications,
@@ -77,7 +77,23 @@ fun HomeAppBar(
                     )
                 }
             },
-            headlineContent = {
+
+            secondaryText = {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        text = "Wertheimer, illinois",
+                        style = MaterialTheme.typography.subtitle2.copy(color = Color.LightGray)
+                    )
+
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_expand),
+                        contentDescription = null,
+                        tint = Color.LightGray
+                    )
+
+                }
+            },
+            text = {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_location_in_use),
@@ -85,27 +101,14 @@ fun HomeAppBar(
                         tint = Color.LightGray
                     )
                     Spacer(modifier = Modifier.width(4.dp))
+
                     Text(
                         text = "Your location",
-                        style = MaterialTheme.typography.titleMedium.copy(color = Color.LightGray)
-                    )
-                }
-            },
-            supportingContent = {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(
-                        text = "Wertheimer, illinois",
-                        style = MaterialTheme.typography.titleMedium.copy(color = Color.LightGray)
-                    )
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_expand),
-                        contentDescription = null,
-                        tint = Color.LightGray
+                        style = MaterialTheme.typography.subtitle2.copy(color = Color.LightGray)
                     )
                 }
             }
         )
-
         val state = remember {
             mutableStateOf("")
         }
@@ -194,10 +197,12 @@ fun SearchView(
             },
             singleLine = true,
             shape = RoundedCornerShape(15.dp), // Rounded corners
-            colors = TextFieldDefaults.colors(
-                focusedTextColor = Color.White,
-                focusedLeadingIconColor = Purple700,
-                focusedTrailingIconColor = Color.White,
+            colors = TextFieldDefaults.textFieldColors(
+                textColor = Color.White,
+                cursorColor = Color.White,
+                leadingIconColor = Purple700,
+                trailingIconColor = Color.White,
+                backgroundColor = Color.White,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
                 disabledIndicatorColor = Color.Transparent
@@ -221,7 +226,7 @@ fun ItemList(state: MutableState<TextFieldValue>) {
     LazyColumn(modifier = Modifier.fillMaxWidth()) {
         items(filteredItems) { filteredItem ->
             ItemListItem(
-                ItemText = filteredItem,
+                itemText = filteredItem,
                 onItemClick = { /* Click event code needs to be implemented */ }
             )
         }
@@ -229,32 +234,17 @@ fun ItemList(state: MutableState<TextFieldValue>) {
 }
 
 @Composable
-fun ItemListItem(ItemText: String, onItemClick: (String) -> Unit) {
+fun ItemListItem(itemText: String, onItemClick: (String) -> Unit) {
     Row(
         modifier = Modifier
-            .clickable(onClick = { onItemClick(ItemText) })
+            .clickable(onClick = { onItemClick(itemText) })
             .background(colorResource(id = R.color.purple_700))
             .height(57.dp)
             .fillMaxWidth()
             .padding(PaddingValues(8.dp, 16.dp))
     ) {
-        Text(text = ItemText, fontSize = 18.sp, color = Color.White)
+        Text(text = itemText, fontSize = 18.sp, color = Color.White)
     }
-}
-
-@Preview
-@Composable
-fun ListItemPreview() {
-    ListItem(
-        headlineContent = { Text("Headline") },
-        supportingContent = { Text("Supporting") },
-        leadingContent = {
-            Icon(Icons.Default.Search, contentDescription = null)
-        },
-        trailingContent = {
-            Icon(Icons.Default.Search, contentDescription = null)
-        }
-    )
 }
 
 

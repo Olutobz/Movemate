@@ -28,7 +28,6 @@ class MoveMateAppState(
     private val resources: Resources,
 ) {
 
-    // Logic to decide when to show the bottom bar
     val shouldShowBottomBar: Boolean
         @Composable get() = navController
             .currentBackStackEntryAsState().value?.destination?.route in bottomBarRoutes

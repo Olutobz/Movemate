@@ -18,14 +18,19 @@ fun AnimatedAppBar(currentState: DetailState, content: @Composable () -> Unit) {
         currentState == DetailState.VISIBLE,
         enter = fadeIn(animationSpec = tween(delayMillis = 500)) + slideInVertically(
             animationSpec = tween(
-                AnimationDuration, easing = LinearEasing, delayMillis = 100
+                AnimationDuration,
+                easing = LinearEasing,
+                delayMillis = 100
             )
-        ),
-        exitTransition = fadeOut() + slideOutVertically(
-            animationSpec = tween(
-                AnimationDuration, easing = LinearEasing, delayMillis = 100
-            )
-        )
+        ), exitTransition =
+            fadeOut() +
+                    slideOutVertically(
+                        animationSpec = tween(
+                            AnimationDuration,
+                            easing = LinearEasing,
+                            delayMillis = 100
+                        )
+                    )
     ) {
         content()
     }

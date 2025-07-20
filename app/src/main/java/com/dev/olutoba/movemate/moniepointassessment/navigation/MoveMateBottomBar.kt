@@ -10,9 +10,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -38,7 +38,7 @@ fun MoveMateBottomBar(
     SlideInUpContainer(currentRoute == BottomNavigationItem.HOME.route) {
         BottomNavigation(
             modifier = modifier,
-            backgroundColor = MaterialTheme.colorScheme.surface
+            backgroundColor = MaterialTheme.colors.surface
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly
@@ -73,7 +73,7 @@ fun MoveMateBottomBar(
                                     fontSize = 10.sp
                                 )
                             },
-                            selectedContentColor = MaterialTheme.colorScheme.primary,
+                            selectedContentColor = MaterialTheme.colors.primary,
                             unselectedContentColor = BottomNavUnselectedColor,
                             alwaysShowLabel = false
                         )

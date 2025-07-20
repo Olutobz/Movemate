@@ -14,17 +14,16 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Done
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -195,9 +194,7 @@ fun DestinationCard(modifier: Modifier = Modifier) {
     val weight = remember { mutableStateOf("") }
 
     Card(
-        modifier = modifier,
-        shape = RoundedCornerShape(16.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+        modifier = modifier, shape = RoundedCornerShape(16.dp), elevation = 0.dp
     ) {
         Column(
             modifier = Modifier
@@ -229,11 +226,7 @@ fun DestinationCard(modifier: Modifier = Modifier) {
 
 @Composable
 fun PackagingContainer(modifier: Modifier = Modifier) {
-    Card(
-        modifier = modifier,
-        elevation = CardDefaults.cardElevation(defaultElevation = 0.5.dp),
-        shape = RoundedCornerShape(10.dp)
-    ) {
+    Card(modifier = modifier, elevation = 0.5.dp, shape = RoundedCornerShape(10.dp)) {
         Row(
             Modifier
                 .fillMaxWidth()
@@ -262,7 +255,7 @@ fun PackagingContainer(modifier: Modifier = Modifier) {
                     .weight(1f)
                     .padding(horizontal = 8.dp),
                 text = "Box",
-                style = MaterialTheme.typography.titleMedium.copy(
+                style = MaterialTheme.typography.subtitle2.copy(
                     fontWeight = FontWeight.SemiBold,
                     color = Blue300,
                     fontSize = 20.sp

@@ -1,6 +1,6 @@
 package com.dev.olutoba.movemate.moniepointassessment.ui.theme
 
-import androidx.compose.material3.Typography
+import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -21,45 +21,50 @@ val inter = FontFamily(
 )
 
 // Set of Material typography styles to start with
-val Typography: Typography = Typography(
-    displaySmall = TextStyle( // was h5
-        fontFamily = inter,
-        fontSize = 20.sp,
-        fontWeight = FontWeight.ExtraBold
-    ),
-    titleMedium = TextStyle( // was subtitle1
+val Typography = Typography(
+    defaultFontFamily = inter,
+
+    subtitle1 = TextStyle(
         fontFamily = inter,
         fontSize = 16.sp,
         fontWeight = FontWeight.Normal
     ),
-    titleSmall = TextStyle( // was subtitle2
+
+    subtitle2 = TextStyle(
         fontFamily = inter,
         fontSize = 14.sp,
         fontWeight = FontWeight.Medium
     ),
-    bodyLarge = TextStyle( // was body1
+    body1 = TextStyle(
         fontFamily = inter,
         fontSize = 16.sp,
         fontWeight = FontWeight.Normal
     ),
-    bodyMedium = TextStyle( // was body2
+    body2 = TextStyle(
         fontFamily = inter,
         fontSize = 14.sp,
         fontWeight = FontWeight.Normal
     ),
-    labelLarge = TextStyle( // was button
+
+    button = TextStyle(
         fontFamily = inter,
         fontSize = 14.sp,
         fontWeight = FontWeight.Medium
     ),
-    labelMedium = TextStyle( // was caption
+    caption = TextStyle(
         fontFamily = inter,
         fontSize = 12.sp,
         fontWeight = FontWeight.Normal
     ),
-    labelSmall = TextStyle( // was overline
+    overline = TextStyle(
         fontFamily = inter,
         fontSize = 10.sp,
         fontWeight = FontWeight.Normal
+    ),
+
+    h5 = TextStyle(
+        fontFamily = inter,
+        fontSize = 20.sp,
+        fontWeight = FontWeight.ExtraBold
     )
 )

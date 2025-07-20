@@ -1,7 +1,8 @@
 package com.dev.olutoba.movemate.moniepointassessment.ui.status
 
+import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.animateIntAsState
+import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.scaleIn
 import androidx.compose.foundation.Image
@@ -14,19 +15,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.Green
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -37,28 +36,28 @@ import com.dev.olutoba.movemate.moniepointassessment.DetailState
 import com.dev.olutoba.movemate.moniepointassessment.components.MoveMateButton
 import com.dev.olutoba.movemate.moniepointassessment.components.SlideInUpContainer
 import com.dev.olutoba.movemate.moniepointassessment.components.SlideInVertical
+import com.dev.olutoba.movemate.moniepointassessment.ui.theme.Green100
+import java.text.DecimalFormat
 
 
 @Composable
 fun StatusScreen(onHomeClicked: () -> Unit) {
     var currentState by remember { mutableStateOf(DetailState.INVISIBLE) }
-    var amount by remember { mutableIntStateOf(1300) }
+    val amount = remember { Animatable(0f) }
+    val targetValue = 1500
 
-    val amountCounter by animateIntAsState(
-        targetValue = 1500,
-        animationSpec = tween(
-            durationMillis = 700,
-            delayMillis = 500,
-            easing = FastOutSlowInEasing
+    LaunchedEffect(targetValue) {
+        amount.animateTo(
+            targetValue.toFloat(),
+            animationSpec = tween(
+                durationMillis = 1500,
+                easing = LinearEasing
+            )
         )
-    )
+    }
 
     LaunchedEffect(key1 = currentState) {
         currentState = DetailState.VISIBLE
-    }
-
-    LaunchedEffect(key1 = amountCounter) {
-        amount = amountCounter
     }
 
     Column(
@@ -99,14 +98,14 @@ fun StatusScreen(onHomeClicked: () -> Unit) {
             ) {
                 Text(
                     text = "Total Estimated Amount",
-                    style = MaterialTheme.typography.titleMedium.copy(fontSize = 24.sp)
+                    style = MaterialTheme.typography.subtitle2.copy(fontSize = 24.sp)
                 )
 
-                AmountCounterText(amount)
+                AmountCounterText(amount.value)
 
                 Text(
                     text = "This Amount is Estimated this will vary\nif your change your location or weight",
-                    style = MaterialTheme.typography.titleMedium.copy(color = Color.Gray)
+                    style = MaterialTheme.typography.subtitle2.copy(color = Color.Gray)
                 )
             }
         }
@@ -125,14 +124,14 @@ fun StatusScreen(onHomeClicked: () -> Unit) {
 }
 
 @Composable
-fun AmountCounterText(amount: Int) {
+fun AmountCounterText(amount: Float) {
     Row(verticalAlignment = Alignment.Bottom) {
         Text(
-            text = "$$amount",
-            style = MaterialTheme.typography.titleMedium.copy(fontSize = 24.sp, color = Color.Green)
+            text = formatAmount(amount),
+            style = MaterialTheme.typography.subtitle2.copy(fontSize = 24.sp, color = Green100)
         )
         Spacer(modifier = Modifier.width(4.dp))
-        Text(text = "USD", color = Green, fontSize = 20.sp)
+        Text(text = "USD", color = Green100, fontSize = 20.sp)
     }
 }
 
@@ -142,4 +141,9 @@ fun PreviewStatusScreen() {
     StatusScreen {
 
     }
+}
+
+fun formatAmount(value: Number): String {
+    val df = DecimalFormat("$##,###,##0")
+    return df.format(value)
 }

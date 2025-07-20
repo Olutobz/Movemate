@@ -13,10 +13,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Scaffold
-import androidx.compose.material3.ScrollableTabRow
-import androidx.compose.material3.Tab
-import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
-import androidx.compose.material3.Text
+import androidx.compose.material.ScrollableTabRow
+import androidx.compose.material.Tab
+import androidx.compose.material.TabRowDefaults.tabIndicatorOffset
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -32,16 +32,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dev.olutoba.movemate.moniepointassessment.DetailState
 import com.dev.olutoba.movemate.moniepointassessment.components.MoveMateCenterAppBar
+import com.dev.olutoba.movemate.moniepointassessment.components.Section
 import com.dev.olutoba.movemate.moniepointassessment.components.ShipmentCard
 import com.dev.olutoba.movemate.moniepointassessment.components.SlideInUpContainer
 import com.dev.olutoba.movemate.moniepointassessment.data.FakeShipmentDataSource
+import com.dev.olutoba.movemate.moniepointassessment.models.ShipmentItem
+import com.dev.olutoba.movemate.moniepointassessment.navigation.AnimatedAppBar
 import com.dev.olutoba.movemate.moniepointassessment.ui.theme.OffWhite
 import com.dev.olutoba.movemate.moniepointassessment.ui.theme.Orange600
 import com.dev.olutoba.movemate.moniepointassessment.ui.theme.Transluscent
 import com.dev.olutoba.movemate.moniepointassessment.ui.theme.White
-import com.dev.olutoba.movemate.moniepointassessment.components.Section
-import com.dev.olutoba.movemate.moniepointassessment.models.ShipmentItem
-import com.dev.olutoba.movemate.moniepointassessment.navigation.AnimatedAppBar
 
 @Composable
 fun ShipmentScreen(modifier: Modifier = Modifier, onBackClicked: () -> Unit) {
@@ -127,7 +127,8 @@ fun ShipmentTabContainer(
     ) {
         // Create tabs dynamically based on your data
         tabs.forEachIndexed { index, item ->
-            Tab(modifier = Modifier.padding(4.dp),
+            Tab(
+                modifier = Modifier.padding(4.dp),
                 selected = selectedTabIndex == index,
                 onClick = { onClick(index) }
             ) {
